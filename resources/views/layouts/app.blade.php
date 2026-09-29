@@ -23,15 +23,50 @@
     {{-- Lucide Icons --}}
     <script src="https://unpkg.com/lucide@latest"></script>
 
+    {{-- =========================================================
+        CSS DIRECT POUR GARANTIR LE HEADER FIXE
+    ========================================================== --}}
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .arti-fixed-header {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            z-index: 99999 !important;
+        }
+
+        .arti-main {
+            padding-top: 80px !important;
+        }
+
+        .arti-mobile-menu {
+            position: fixed !important;
+            top: 80px !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            z-index: 99998 !important;
+        }
+    </style>
+
     @stack('styles')
 </head>
 
 <body class="min-h-screen bg-white text-slate-900 antialiased">
 
     {{-- =========================================================
-        HEADER
+        HEADER FIXE
     ========================================================== --}}
-    <header class="relative z-40 bg-white border-b border-slate-200">
+    <header class="arti-fixed-header bg-white border-b border-slate-200 shadow-sm">
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -135,7 +170,7 @@
         {{-- =====================================================
             MOBILE NAVIGATION
         ====================================================== --}}
-        <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200 bg-white">
+        <div id="mobile-menu" class="arti-mobile-menu hidden lg:hidden border-t border-slate-200 bg-white shadow-lg">
 
             <div class="max-w-7xl mx-auto px-4 py-5 sm:px-6">
 
@@ -197,7 +232,7 @@
     {{-- =========================================================
         MAIN CONTENT
     ========================================================== --}}
-    <main class="min-h-[60vh]">
+    <main class="arti-main min-h-[60vh]">
 
         @yield('content')
 

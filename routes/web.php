@@ -8,3 +8,4 @@ Route::get('/', function () {
 });
 Route::get('/secteurs', [SecteurController::class, 'index'])->name('secteurs.index');
 Route::get('/secteurs/{secteur}', [SecteurController::class, 'show'])->name('secteurs.show');
+Route::view('/services', 'services')->name('services');
