@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
 
+    ```
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description" content="@yield('meta_description', 'ARTI CALL - Centre d’appel à Fès, Maroc. Solutions professionnelles de relation client, téléprospection et développement commercial.')">
@@ -24,8 +26,8 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     {{-- =========================================================
-        CSS DIRECT POUR GARANTIR LE HEADER FIXE
-    ========================================================== --}}
+    CSS DIRECT POUR GARANTIR LE HEADER FIXE
+========================================================== --}}
     <style>
         html {
             scroll-behavior: smooth;
@@ -59,13 +61,16 @@
     </style>
 
     @stack('styles')
+    ```
+
 </head>
 
 <body class="min-h-screen bg-white text-slate-900 antialiased">
 
+    ```
     {{-- =========================================================
-        HEADER FIXE
-    ========================================================== --}}
+    HEADER FIXE
+========================================================== --}}
     <header class="arti-fixed-header bg-white border-b border-slate-200 shadow-sm">
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -168,8 +173,8 @@
 
 
         {{-- =====================================================
-            MOBILE NAVIGATION
-        ====================================================== --}}
+        MOBILE NAVIGATION
+    ====================================================== --}}
         <div id="mobile-menu" class="arti-mobile-menu hidden lg:hidden border-t border-slate-200 bg-white shadow-lg">
 
             <div class="max-w-7xl mx-auto px-4 py-5 sm:px-6">
@@ -230,8 +235,8 @@
 
 
     {{-- =========================================================
-        MAIN CONTENT
-    ========================================================== --}}
+    MAIN CONTENT
+========================================================== --}}
     <main class="arti-main min-h-[60vh]">
 
         @yield('content')
@@ -240,81 +245,8 @@
 
 
     {{-- =========================================================
-        CTA
-    ========================================================== --}}
-    <section class="bg-slate-950">
-
-        <div class="max-w-7xl mx-auto px-4 py-14 sm:px-6 lg:px-8">
-
-            <div class="relative overflow-hidden rounded-3xl bg-red-600 px-6 py-10 sm:px-10 lg:px-14">
-
-                {{-- Decorative circles --}}
-                <div class="absolute -right-20 -top-20 w-64 h-64 rounded-full bg-white/10">
-                </div>
-
-                <div class="absolute -left-20 -bottom-24 w-72 h-72 rounded-full bg-white/5">
-                </div>
-
-
-                <div class="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
-
-                    <div class="max-w-2xl">
-
-                        <span
-                            class="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white mb-4">
-
-                            <span class="w-2 h-2 rounded-full bg-white"></span>
-
-                            Parlons de votre projet
-
-                        </span>
-
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
-                            Besoin d'une solution de relation client ?
-                        </h2>
-
-                        <p class="mt-4 text-base leading-7 text-white/85 max-w-xl">
-                            ARTI CALL accompagne les entreprises dans leurs
-                            opérations de service client, téléprospection et
-                            développement commercial depuis Fès, Maroc.
-                        </p>
-
-                    </div>
-
-
-                    <div class="flex flex-col sm:flex-row gap-3 shrink-0">
-
-                        <a href="{{ url('/contact') }}"
-                            class="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-bold text-red-600 shadow-sm hover:bg-slate-100 transition">
-
-                            <span>Demander un devis</span>
-
-                            <i data-lucide="arrow-right" class="w-4 h-4">
-                            </i>
-
-                        </a>
-
-                        <a href="{{ url('/services') }}"
-                            class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/40 bg-white/10 px-6 py-3.5 text-sm font-bold text-white hover:bg-white/20 transition">
-
-                            <span>Nos services</span>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    {{-- =========================================================
-        FOOTER
-    ========================================================== --}}
+    FOOTER
+========================================================== --}}
     <footer class="bg-white border-t border-slate-200">
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -379,8 +311,7 @@
                     <ul class="mt-5 space-y-3">
 
                         <li>
-                            <a href="{{ url('/') }}"
-                                class="text-sm text-slate-600 hover:text-red-600 transition">
+                            <a href="{{ url('/') }}" class="text-sm text-slate-600 hover:text-red-600 transition">
                                 Accueil
                             </a>
                         </li>
@@ -622,8 +553,8 @@
 
 
     {{-- =========================================================
-        JAVASCRIPT
-    ========================================================== --}}
+    JAVASCRIPT
+========================================================== --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
@@ -726,6 +657,7 @@
     </script>
 
     @stack('scripts')
+    ```
 
 </body>
 
