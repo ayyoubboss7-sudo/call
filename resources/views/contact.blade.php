@@ -1,4 +1,4 @@
-```blade
+
 @extends('layouts.app')
 
 @section('title', 'Contact - ARTI CALL')
@@ -36,8 +36,7 @@ HERO
 
                 </div>
 
-                <h1
-                    class="mt-6 text-4xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">
+                <h1 class="mt-6 text-4xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">
 
                     Parlons de votre
 
@@ -60,13 +59,19 @@ HERO
             </div>
 
         </div>
+
     </section>
 
 
     {{-- =========================================================
 CONTACT SECTION
+
+========================================================= --}} <section class="bg-slate-50 py-20 sm:py-24">
+
+=======
 ========================================================= --}}
     <section class="bg-slate-50 py-20 sm:py-24">
+
 
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
@@ -518,8 +523,6 @@ CONTACT SECTION
 
     {{-- =========================================================
 MAP / LOCALISATION
-========================================================= --}}
-    <section class="bg-white py-20 sm:py-24">
 
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
@@ -579,48 +582,15 @@ MAP / LOCALISATION
                 {{-- Map placeholder --}}
                 <div class="relative min-h-[350px] overflow-hidden rounded-3xl bg-slate-950">
 
-                    {{-- Professional Smoke Background --}}
-                    <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-[#111827] to-black"></div>
-
-                    {{-- Ambient red glows --}}
-                    <div class="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-red-600/20 blur-[100px]"></div>
-
-                    <div class="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-red-700/10 blur-[100px]"></div>
-
-                    {{-- Smoke --}}
-                    <div class="arti-smoke arti-smoke-1"></div>
-                    <div class="arti-smoke arti-smoke-2"></div>
-                    <div class="arti-smoke arti-smoke-3"></div>
-
-                    {{-- Center light --}}
-                    <div
-                        class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(220,38,38,0.10),transparent_58%)]">
+                    <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-950 to-black">
                     </div>
 
-                    {{-- Decorative circles --}}
-                    <div
-                        class="absolute -right-20 -top-20 w-64 h-64 rounded-full border border-red-500/10">
+                    <div class="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-red-600/20 blur-3xl">
                     </div>
 
-                    <div
-                        class="absolute -right-10 -top-10 w-44 h-44 rounded-full border border-red-500/10">
+                    <div class="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-red-600/10 blur-3xl">
                     </div>
 
-                    {{-- Particles --}}
-                    <div class="absolute top-16 left-16 w-1 h-1 rounded-full bg-white/30 animate-pulse"></div>
-
-                    <div
-                        class="absolute top-32 right-24 w-1.5 h-1.5 rounded-full bg-red-400/40 animate-pulse">
-                    </div>
-
-                    <div class="absolute bottom-24 left-28 w-1 h-1 rounded-full bg-white/20 animate-pulse"></div>
-
-                    <div
-                        class="absolute bottom-16 right-20 w-1 h-1 rounded-full bg-red-500/40 animate-pulse">
-                    </div>
-
-
-                    {{-- Map content - INCHANGÉ --}}
                     <div class="relative z-10 flex min-h-[350px] items-center justify-center p-8">
 
                         <div class="text-center">
@@ -660,8 +630,6 @@ MAP / LOCALISATION
 
     {{-- =========================================================
 FINAL CTA
-========================================================= --}}
-    <section class="bg-slate-950 py-20 sm:py-24">
 
         <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
 
@@ -721,6 +689,7 @@ FINAL CTA
 
     {{-- =========================================================
 CONTACT FORM ICONS CSS
+
 ========================================================= --}}
     @push('styles')
         <style>
@@ -771,113 +740,7 @@ CONTACT FORM ICONS CSS
                 position: relative;
                 z-index: 1;
             }
-
-
-            /* =========================================================
-               PROFESSIONAL SMOKE BACKGROUND
-               MAP / FÈS - ARTI CALL
-            ========================================================= */
-
-            .arti-smoke {
-                position: absolute;
-                width: 420px;
-                height: 420px;
-                border-radius: 50%;
-                pointer-events: none;
-                filter: blur(75px);
-                opacity: 0.15;
-                mix-blend-mode: screen;
-            }
-
-            .arti-smoke-1 {
-                left: -180px;
-                bottom: -190px;
-
-                background: radial-gradient(circle,
-                        rgba(255, 255, 255, 0.30) 0%,
-                        rgba(255, 255, 255, 0.12) 30%,
-                        transparent 70%);
-
-                animation: artiSmokeOne 16s ease-in-out infinite alternate;
-            }
-
-            .arti-smoke-2 {
-                right: -180px;
-                top: -160px;
-
-                background: radial-gradient(circle,
-                        rgba(220, 38, 38, 0.30) 0%,
-                        rgba(220, 38, 38, 0.10) 35%,
-                        transparent 70%);
-
-                animation: artiSmokeTwo 19s ease-in-out infinite alternate;
-            }
-
-            .arti-smoke-3 {
-                width: 350px;
-                height: 350px;
-                left: 32%;
-                top: 20%;
-
-                background: radial-gradient(circle,
-                        rgba(255, 255, 255, 0.18) 0%,
-                        rgba(148, 163, 184, 0.08) 35%,
-                        transparent 70%);
-
-                opacity: 0.09;
-
-                animation: artiSmokeThree 22s ease-in-out infinite alternate;
-            }
-
-            @keyframes artiSmokeOne {
-                0% {
-                    transform: translate3d(-30px, 20px, 0) scale(0.90);
-                }
-
-                50% {
-                    transform: translate3d(80px, -45px, 0) scale(1.15);
-                }
-
-                100% {
-                    transform: translate3d(160px, 20px, 0) scale(1);
-                }
-            }
-
-            @keyframes artiSmokeTwo {
-                0% {
-                    transform: translate3d(40px, -20px, 0) scale(1);
-                }
-
-                50% {
-                    transform: translate3d(-70px, 50px, 0) scale(1.18);
-                }
-
-                100% {
-                    transform: translate3d(-120px, 10px, 0) scale(0.95);
-                }
-            }
-
-            @keyframes artiSmokeThree {
-                0% {
-                    transform: translate3d(-20px, 20px, 0) scale(0.90);
-                }
-
-                50% {
-                    transform: translate3d(50px, -30px, 0) scale(1.15);
-                }
-
-                100% {
-                    transform: translate3d(-40px, 40px, 0) scale(1);
-                }
-            }
-
-            @media (prefers-reduced-motion: reduce) {
-                .arti-smoke {
-                    animation: none;
-                }
-            }
         </style>
     @endpush
 
 @endsection
-```
