@@ -206,9 +206,9 @@ class SecteurSeeder extends Seeder
                     'description_courte' => $s['courte'],
                     'description'        => $s['description'],
                     'services'           => $s['services'],
-                    'defis'              => array_map(fn ($d) => ['titre' => $d[0], 'texte' => $d[1]], $s['defis']),
+                    'defis'              => array_map(fn($d) => ['titre' => $d[0], 'texte' => $d[1]], $s['defis']),
                     'avantages'          => $avantages,
-                    'faq'                => array_map(fn ($f) => ['q' => $f[0], 'a' => $f[1]], $s['faq']),
+                    'faq'                => array_map(fn($f) => ['q' => $f[0], 'a' => $f[1]], $s['faq']),
                     'ordre'              => $i + 1,
                     'is_active'          => true,
                 ]

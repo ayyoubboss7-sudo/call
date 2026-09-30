@@ -11,3 +11,10 @@ Route::get('/secteurs', [SecteurController::class, 'index'])->name('secteurs.ind
 Route::get('/secteurs/{secteur}', [SecteurController::class, 'show'])->name('secteurs.show');
 Route::view('/services', 'services')->name('services');
 Route::get('/faq', [FaqController::class, 'index'])->name('faq');
+Route::get('/a-propos', function () {
+    return view('a-propos');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');

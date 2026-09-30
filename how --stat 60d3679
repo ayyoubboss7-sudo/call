@@ -1,0 +1,9 @@
+[33m60d3679[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mbrahim[m[33m)[m HEAD@{0}: commit: ok
+[33mebb33ff[m[33m ([m[1;32mmain[m[33m)[m HEAD@{1}: checkout: moving from boss to brahim
+[33mf5c114b[m[33m ([m[1;32mboss[m[33m)[m HEAD@{2}: commit: ok
+[33md6976e6[m HEAD@{3}: pull origin boss: Fast-forward
+[33mebb33ff[m[33m ([m[1;32mmain[m[33m)[m HEAD@{4}: checkout: moving from main to boss
+[33mebb33ff[m[33m ([m[1;32mmain[m[33m)[m HEAD@{5}: checkout: moving from brahim to main
+[33mebb33ff[m[33m ([m[1;32mmain[m[33m)[m HEAD@{6}: checkout: moving from boss to brahim
+[33mebb33ff[m[33m ([m[1;32mmain[m[33m)[m HEAD@{7}: commit: ok
+[33mcf73dd5[m HEAD@{8}: clone: from https://github.com/ayyoubboss7-sudo/call.git

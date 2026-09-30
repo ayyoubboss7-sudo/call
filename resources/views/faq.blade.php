@@ -40,7 +40,7 @@
 
                 <div class="lg:col-span-7">
                     <h1 class="text-4xl font-extrabold leading-tight text-white sm:text-5xl">
-                        Vos questions sur ARTI CALL
+                        Vos questions sur <span class="text-red-500">ARTI CALL</span>
                     </h1>
 
                     <p class="mt-5 max-w-xl text-base leading-8 text-slate-300 sm:text-lg">
