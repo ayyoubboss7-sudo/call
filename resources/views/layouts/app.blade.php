@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 
 <head>
@@ -140,6 +141,8 @@
     </style>
 
     @stack('styles')
+    ```
+
 </head>
 
 <body class="min-h-screen bg-white text-slate-900 antialiased">
@@ -148,8 +151,8 @@
     <div id="page-progress"></div>
 
     {{-- =========================================================
-        HEADER FIXE
-    ========================================================== --}}
+    HEADER FIXE
+========================================================== --}}
     <header class="arti-fixed-header bg-white border-b border-slate-200 shadow-sm">
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -265,8 +268,8 @@
 
 
     {{-- =========================================================
-        MAIN CONTENT
-    ========================================================== --}}
+    MAIN CONTENT
+========================================================== --}}
     <main class="arti-main min-h-[60vh]">
         @yield('content')
     </main>
@@ -490,8 +493,8 @@
 
 
     {{-- =========================================================
-        JAVASCRIPT
-    ========================================================== --}}
+    JAVASCRIPT
+========================================================== --}}
     <script>
         document.addEventListener('DOMContentLoaded', function () {
 
@@ -713,6 +716,7 @@
     </script>
 
     @stack('scripts')
+    ```
 
 </body>
 
