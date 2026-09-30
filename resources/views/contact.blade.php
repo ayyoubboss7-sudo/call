@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('title', 'Contact - ARTI CALL')
@@ -64,7 +65,12 @@ HERO
 
     {{-- =========================================================
 CONTACT SECTION
+
 ========================================================= --}} <section class="bg-slate-50 py-20 sm:py-24">
+
+=======
+========================================================= --}}
+    <section class="bg-slate-50 py-20 sm:py-24">
 
 
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -518,9 +524,6 @@ CONTACT SECTION
     {{-- =========================================================
 MAP / LOCALISATION
 
-========================================================= --}} <section class="bg-white py-20 sm:py-24">
-
-        ```
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
             <div class="grid lg:grid-cols-2 gap-10 items-center">
@@ -628,9 +631,6 @@ MAP / LOCALISATION
     {{-- =========================================================
 FINAL CTA
 
-========================================================= --}} <section class="bg-slate-950 py-20 sm:py-24">
-
-        ```
         <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
 
             <div class="relative overflow-hidden rounded-3xl bg-red-600 p-8 text-center sm:p-12 lg:p-14">
