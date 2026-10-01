@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\SecteurController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -9,7 +10,12 @@ Route::get('/', function () {
 });
 Route::get('/secteurs', [SecteurController::class, 'index'])->name('secteurs.index');
 Route::get('/secteurs/{secteur}', [SecteurController::class, 'show'])->name('secteurs.show');
-Route::view('/services', 'services')->name('services');
+Route::get('/services', function () {
+    return view('services.services');
+})->name('services');
+
+Route::get('/services/{slug}', [ServiceController::class, 'show'])
+    ->name('services.show');
 Route::get('/faq', [FaqController::class, 'index'])->name('faq');
 Route::get('/a-propos', function () {
     return view('a-propos');
