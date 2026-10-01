@@ -205,7 +205,7 @@
 
                 {{-- Desktop CTA --}}
                 <div class="hidden lg:flex items-center">
-                    <a href="{{ url('/contact') }}"
+                    <a href="{{ url('/devis') }}"
                         class="inline-flex items-center gap-2 rounded-xl bg-red-600 px-5 py-3 text-sm font-bold text-white shadow-sm hover:bg-red-700 transition">
                         <span>Demander un devis</span>
                         <i data-lucide="arrow-right" class="w-4 h-4"></i>
@@ -251,7 +251,7 @@
                         class="rounded-lg px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-red-50 hover:text-red-600 transition">Contact</a>
 
                     <div class="pt-3 mt-2 border-t border-slate-100">
-                        <a href="{{ url('/contact') }}"
+                        <a href="{{ url('/devis') }}"
                             class="flex items-center justify-center gap-2 w-full rounded-xl bg-red-600 px-5 py-3 text-sm font-bold text-white hover:bg-red-700 transition">
                             <span>Demander un devis</span>
                             <i data-lucide="arrow-right" class="w-4 h-4"></i>

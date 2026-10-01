@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DevisController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\SecteurController;
 use Illuminate\Support\Facades\Route;
@@ -18,3 +19,8 @@ Route::get('/a-propos', function () {
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
+Route::get('/devis', [DevisController::class, 'create'])->name('devis');
+Route::post('/devis', [DevisController::class, 'store'])
+    ->middleware('throttle:5,1')
+    ->name('devis.store');
+
