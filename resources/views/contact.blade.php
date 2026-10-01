@@ -1,4 +1,3 @@
-```blade
 @extends('layouts.app')
 
 @section('title', 'Contact - ARTI CALL')
@@ -575,76 +574,53 @@ MAP / LOCALISATION
                 </div>
 
 
-                {{-- Map placeholder --}}
-                <div class="relative min-h-[350px] overflow-hidden rounded-3xl bg-slate-950">
+                {{-- =========================================================
+                REAL MAP - ARTI CALL / FÈS
+                ========================================================== --}}
+                <a href="https://www.google.com/maps/search/?api=1&query=arti%20call%20Fes" target="_blank"
+                    rel="noopener noreferrer"
+                    class="relative block min-h-[350px] overflow-hidden rounded-3xl bg-slate-950 shadow-xl cursor-pointer group">
 
-                    {{-- Professional Smoke Background --}}
-                    <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-[#111827] to-black"></div>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2759.6066691311216!2d-5.0022347!3d34.034588899999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd9f8b6be3794107%3A0xc01be10f93e1721f!2sarti%20call!5e1!3m2!1sfr!2sma!4v1790865716604!5m2!1sfr!2sma"
+                        class="absolute inset-0 h-full min-h-[350px] w-full border-0 pointer-events-none" width="600"
+                        height="450" style="border:0;" allowfullscreen loading="lazy"
+                        referrerpolicy="strict-origin-when-cross-origin" title="Localisation ARTI CALL - Fès">
+                    </iframe>
 
-                    {{-- Ambient red glows --}}
-                    <div class="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-red-600/20 blur-[100px]"></div>
-
-                    <div class="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-red-700/10 blur-[100px]"></div>
-
-                    {{-- Smoke --}}
-                    <div class="arti-smoke arti-smoke-1"></div>
-                    <div class="arti-smoke arti-smoke-2"></div>
-                    <div class="arti-smoke arti-smoke-3"></div>
-
-                    {{-- Center light --}}
-                    <div
-                        class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(220,38,38,0.10),transparent_58%)]">
+                    {{-- Map overlay --}}
+                    <div class="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-slate-900/10">
                     </div>
 
-                    {{-- Decorative circles --}}
-                    <div class="absolute -right-20 -top-20 w-64 h-64 rounded-full border border-red-500/10">
-                    </div>
+                    {{-- Location badge --}}
+                    <div class="pointer-events-none absolute left-4 top-4 z-10">
 
-                    <div class="absolute -right-10 -top-10 w-44 h-44 rounded-full border border-red-500/10">
-                    </div>
+                        <div
+                            class="flex items-center gap-2 rounded-xl border border-white/20 bg-slate-950/90 px-4 py-3 shadow-xl backdrop-blur-md">
 
-                    {{-- Particles --}}
-                    <div class="absolute top-16 left-16 w-1 h-1 rounded-full bg-white/30 animate-pulse"></div>
+                            <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-red-600">
 
-                    <div class="absolute top-32 right-24 w-1.5 h-1.5 rounded-full bg-red-400/40 animate-pulse">
-                    </div>
-
-                    <div class="absolute bottom-24 left-28 w-1 h-1 rounded-full bg-white/20 animate-pulse"></div>
-
-                    <div class="absolute bottom-16 right-20 w-1 h-1 rounded-full bg-red-500/40 animate-pulse">
-                    </div>
-
-
-                    {{-- Map content - INCHANGÉ --}}
-                    <div class="relative z-10 flex min-h-[350px] items-center justify-center p-8">
-
-                        <div class="text-center">
-
-                            <div
-                                class="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-red-600 shadow-2xl shadow-red-600/30">
-
-                                <i data-lucide="map-pin" class="h-9 w-9 text-white">
-                                </i>
+                                <i data-lucide="map-pin" class="h-4 w-4 text-white"></i>
 
                             </div>
 
-                            <h3 class="mt-6 text-2xl font-extrabold text-white">
+                            <div>
 
-                                Fès, Maroc
+                                <p class="text-xs font-bold uppercase tracking-wider text-slate-400">
+                                    Notre localisation
+                                </p>
 
-                            </h3>
+                                <p class="text-sm font-bold text-white">
+                                    Fès, Maroc
+                                </p>
 
-                            <p class="mt-2 text-sm text-slate-400">
-
-                                ARTI CALL
-
-                            </p>
+                            </div>
 
                         </div>
 
                     </div>
 
-                </div>
+                </a>
 
             </div>
 
@@ -769,9 +745,9 @@ CONTACT FORM ICONS CSS
 
 
             /* =========================================================
-                       PROFESSIONAL SMOKE BACKGROUND
-                       MAP / FÈS - ARTI CALL
-                    ========================================================= */
+                                                               PROFESSIONAL SMOKE BACKGROUND
+                                                               MAP / FÈS - ARTI CALL
+                                                            ========================================================= */
 
             .arti-smoke {
                 position: absolute;
@@ -875,4 +851,3 @@ CONTACT FORM ICONS CSS
     @endpush
 
 @endsection
-```
