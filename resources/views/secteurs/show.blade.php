@@ -122,7 +122,7 @@
                     </li>
                 @endforeach
             </ul>
-            <a href="{{ url('/contact') }}?secteur={{ $secteur->slug }}"
+            <a href="{{ url('/devis') }}?secteur={{ $secteur->slug }}"
                class="mt-7 flex items-center justify-center gap-2 rounded-xl bg-red-600 px-5 py-3 text-sm font-bold text-white hover:bg-red-700 transition">
                 Parler à un expert
             </a>
