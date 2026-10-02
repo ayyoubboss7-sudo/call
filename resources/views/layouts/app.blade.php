@@ -141,7 +141,6 @@
     </style>
 
     @stack('styles')
-    ```
 
 </head>
 
@@ -160,45 +159,33 @@
             <div class="h-20 flex items-center justify-between">
 
                 {{-- Logo --}}
-                <a href="{{ url('/') }}" class="flex items-center gap-3 group">
-
-                    <div
-                        class="w-11 h-11 rounded-xl bg-red-600 flex items-center justify-center shadow-sm group-hover:bg-red-700 transition">
-                        <i data-lucide="phone-call" class="w-5 h-5 text-white"></i>
-                    </div>
-
-                    <div class="leading-tight">
-                        <div class="text-xl font-extrabold tracking-tight text-slate-900">
-                            ARTI <span class="text-red-600">CALL</span>
-                        </div>
-                        <div class="text-[11px] font-medium text-slate-500 uppercase tracking-wider">
-                            Centre d'appel
-                        </div>
-                    </div>
-
+                <a href="{{ url('/') }}" class="flex items-center -ml-3 sm:-ml-3 lg:-ml-5" aria-label="ARTI CALL - Accueil">
+                    <img src="{{ asset('images/logo.png') }}"
+                         alt="ARTI CALL - Centre d'appel à Fès"
+                         class="h-11 sm:h-12 lg:h-14 w-auto">
                 </a>
 
 
                 {{-- Desktop Navigation --}}
                 <nav class="hidden lg:flex items-center gap-8">
 
-                    <a href="{{ url('/') }}"
-                        class="text-sm font-semibold text-slate-700 hover:text-red-600 transition">Accueil</a>
+                    <a href="{{ url('/') }}" {{ request()->is('/') ? 'aria-current=page' : '' }}
+                        class="relative text-sm font-semibold transition {{ request()->is('/') ? 'text-red-600 after:absolute after:left-0 after:-bottom-[29px] after:h-[3px] after:w-full after:rounded-full after:bg-red-600' : 'text-slate-700 hover:text-red-600' }}">Accueil</a>
 
-                    <a href="{{ url('/services') }}"
-                        class="text-sm font-semibold text-slate-700 hover:text-red-600 transition">Services</a>
+                    <a href="{{ url('/services') }}" {{ request()->is('services*') ? 'aria-current=page' : '' }}
+                        class="relative text-sm font-semibold transition {{ request()->is('services*') ? 'text-red-600 after:absolute after:left-0 after:-bottom-[29px] after:h-[3px] after:w-full after:rounded-full after:bg-red-600' : 'text-slate-700 hover:text-red-600' }}">Services</a>
 
-                    <a href="{{ url('/secteurs') }}"
-                        class="text-sm font-semibold text-slate-700 hover:text-red-600 transition">Secteurs</a>
+                    <a href="{{ url('/secteurs') }}" {{ request()->is('secteurs*') ? 'aria-current=page' : '' }}
+                        class="relative text-sm font-semibold transition {{ request()->is('secteurs*') ? 'text-red-600 after:absolute after:left-0 after:-bottom-[29px] after:h-[3px] after:w-full after:rounded-full after:bg-red-600' : 'text-slate-700 hover:text-red-600' }}">Secteurs</a>
 
-                    <a href="{{ url('/a-propos') }}"
-                        class="text-sm font-semibold text-slate-700 hover:text-red-600 transition">À propos</a>
+                    <a href="{{ url('/a-propos') }}" {{ request()->is('a-propos*') ? 'aria-current=page' : '' }}
+                        class="relative text-sm font-semibold transition {{ request()->is('a-propos*') ? 'text-red-600 after:absolute after:left-0 after:-bottom-[29px] after:h-[3px] after:w-full after:rounded-full after:bg-red-600' : 'text-slate-700 hover:text-red-600' }}">À propos</a>
 
-                    <a href="{{ url('/faq') }}"
-                        class="text-sm font-semibold text-slate-700 hover:text-red-600 transition">FAQ</a>
+                    <a href="{{ url('/faq') }}" {{ request()->is('faq*') ? 'aria-current=page' : '' }}
+                        class="relative text-sm font-semibold transition {{ request()->is('faq*') ? 'text-red-600 after:absolute after:left-0 after:-bottom-[29px] after:h-[3px] after:w-full after:rounded-full after:bg-red-600' : 'text-slate-700 hover:text-red-600' }}">FAQ</a>
 
-                    <a href="{{ url('/contact') }}"
-                        class="text-sm font-semibold text-slate-700 hover:text-red-600 transition">Contact</a>
+                    <a href="{{ url('/contact') }}" {{ request()->is('contact*') ? 'aria-current=page' : '' }}
+                        class="relative text-sm font-semibold transition {{ request()->is('contact*') ? 'text-red-600 after:absolute after:left-0 after:-bottom-[29px] after:h-[3px] after:w-full after:rounded-full after:bg-red-600' : 'text-slate-700 hover:text-red-600' }}">Contact</a>
 
                 </nav>
 
@@ -232,23 +219,23 @@
 
                 <nav class="flex flex-col gap-1">
 
-                    <a href="{{ url('/') }}"
-                        class="rounded-lg px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-red-50 hover:text-red-600 transition">Accueil</a>
+                    <a href="{{ url('/') }}" {{ request()->is('/') ? 'aria-current=page' : '' }}
+                        class="rounded-lg px-4 py-3 text-sm font-semibold transition {{ request()->is('/') ? 'bg-red-50 text-red-600' : 'text-slate-700 hover:bg-red-50 hover:text-red-600' }}">Accueil</a>
 
-                    <a href="{{ url('/services') }}"
-                        class="rounded-lg px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-red-50 hover:text-red-600 transition">Services</a>
+                    <a href="{{ url('/services') }}" {{ request()->is('services*') ? 'aria-current=page' : '' }}
+                        class="rounded-lg px-4 py-3 text-sm font-semibold transition {{ request()->is('services*') ? 'bg-red-50 text-red-600' : 'text-slate-700 hover:bg-red-50 hover:text-red-600' }}">Services</a>
 
-                    <a href="{{ url('/secteurs') }}"
-                        class="rounded-lg px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-red-50 hover:text-red-600 transition">Secteurs</a>
+                    <a href="{{ url('/secteurs') }}" {{ request()->is('secteurs*') ? 'aria-current=page' : '' }}
+                        class="rounded-lg px-4 py-3 text-sm font-semibold transition {{ request()->is('secteurs*') ? 'bg-red-50 text-red-600' : 'text-slate-700 hover:bg-red-50 hover:text-red-600' }}">Secteurs</a>
 
-                    <a href="{{ url('/a-propos') }}"
-                        class="rounded-lg px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-red-50 hover:text-red-600 transition">À propos</a>
+                    <a href="{{ url('/a-propos') }}" {{ request()->is('a-propos*') ? 'aria-current=page' : '' }}
+                        class="rounded-lg px-4 py-3 text-sm font-semibold transition {{ request()->is('a-propos*') ? 'bg-red-50 text-red-600' : 'text-slate-700 hover:bg-red-50 hover:text-red-600' }}">À propos</a>
 
-                    <a href="{{ url('/faq') }}"
-                        class="rounded-lg px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-red-50 hover:text-red-600 transition">FAQ</a>
+                    <a href="{{ url('/faq') }}" {{ request()->is('faq*') ? 'aria-current=page' : '' }}
+                        class="rounded-lg px-4 py-3 text-sm font-semibold transition {{ request()->is('faq*') ? 'bg-red-50 text-red-600' : 'text-slate-700 hover:bg-red-50 hover:text-red-600' }}">FAQ</a>
 
-                    <a href="{{ url('/contact') }}"
-                        class="rounded-lg px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-red-50 hover:text-red-600 transition">Contact</a>
+                    <a href="{{ url('/contact') }}" {{ request()->is('contact*') ? 'aria-current=page' : '' }}
+                        class="rounded-lg px-4 py-3 text-sm font-semibold transition {{ request()->is('contact*') ? 'bg-red-50 text-red-600' : 'text-slate-700 hover:bg-red-50 hover:text-red-600' }}">Contact</a>
 
                     <div class="pt-3 mt-2 border-t border-slate-100">
                         <a href="{{ url('/devis') }}"
@@ -278,59 +265,7 @@
     {{-- =========================================================
         CTA
     ========================================================== --}}
-    <section class="bg-slate-950">
-
-        <div class="max-w-7xl mx-auto px-4 py-14 sm:px-6 lg:px-8">
-
-            <div class="relative overflow-hidden rounded-3xl bg-red-600 px-6 py-10 sm:px-10 lg:px-14">
-
-                <div class="absolute -right-20 -top-20 w-64 h-64 rounded-full bg-white/10"></div>
-                <div class="absolute -left-20 -bottom-24 w-72 h-72 rounded-full bg-white/5"></div>
-
-                <div class="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
-
-                    <div class="max-w-2xl">
-
-                        <span
-                            class="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white mb-4">
-                            <span class="w-2 h-2 rounded-full bg-white"></span>
-                            Parlons de votre projet
-                        </span>
-
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
-                            Besoin d'une solution de relation client ?
-                        </h2>
-
-                        <p class="mt-4 text-base leading-7 text-white/85 max-w-xl">
-                            ARTI CALL accompagne les entreprises dans leurs
-                            opérations de service client, téléprospection et
-                            développement commercial depuis Fès, Maroc.
-                        </p>
-
-                    </div>
-
-                    <div class="flex flex-col sm:flex-row gap-3 shrink-0">
-
-                        <a href="{{ url('/contact') }}"
-                            class="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-bold text-red-600 shadow-sm hover:bg-slate-100 transition">
-                            <span>Demander un devis</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </a>
-
-                        <a href="{{ url('/services') }}"
-                            class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/40 bg-white/10 px-6 py-3.5 text-sm font-bold text-white hover:bg-white/20 transition">
-                            <span>Nos services</span>
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
+  
 
 
     {{-- =========================================================
@@ -345,23 +280,11 @@
                 {{-- Brand --}}
                 <div>
 
-                    <a href="{{ url('/') }}" class="inline-flex items-center gap-3">
-
-                        <div class="w-10 h-10 rounded-xl bg-red-600 flex items-center justify-center">
-                            <i data-lucide="phone-call" class="w-5 h-5 text-white"></i>
-                        </div>
-
-                        <div>
-                            <div class="text-lg font-extrabold text-slate-900">
-                                ARTI <span class="text-red-600">CALL</span>
-                            </div>
-                            <div class="text-[10px] uppercase tracking-wider text-slate-500">
-                                Centre d'appel
-                            </div>
-                        </div>
-
-                    </a>
-
+                  <a href="{{ url('/') }}" class="inline-flex items-center" aria-label="ARTI CALL - Accueil">
+    <img src="{{ asset('images/logo.png') }}"
+         alt="ARTI CALL - Centre d'appel à Fès"
+         class="h-12 w-auto">
+</a>
                     <p class="mt-5 text-sm leading-6 text-slate-600 max-w-xs">
                         Centre d'appel basé à Fès, Maroc, spécialisé dans
                         la relation client, la téléprospection et le
@@ -716,7 +639,6 @@
     </script>
 
     @stack('scripts')
-    ```
 
 </body>
 

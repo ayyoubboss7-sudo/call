@@ -1,4 +1,3 @@
-```blade
 @extends('layouts.app')
 
 @section('title', 'ARTI CALL - Centre d’appel à Fès, Maroc')
