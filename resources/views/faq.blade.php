@@ -21,7 +21,7 @@
 @section('content')
 
     {{-- =====================================================
-        HERO : rouge, avec barre de recherche
+        HERO
     ====================================================== --}}
     <section class="relative overflow-hidden bg-slate-950">
 
@@ -50,19 +50,7 @@
                 </div>
 
                 {{-- Accès rapide --}}
-                <div class="lg:col-span-5">
-                    <div class="rounded-2xl bg-white/10 p-5 backdrop-blur-sm ring-1 ring-white/20">
-                        <p class="text-sm font-semibold text-white">Vous préférez nous parler directement ?</p>
-                        <p class="mt-1 text-sm leading-6 text-white/80">
-                            Décrivez-nous votre projet, nous revenons vers vous avec une proposition adaptée.
-                        </p>
-                        <a href="{{ url('/contact') }}"
-                            class="mt-4 inline-flex items-center gap-2 rounded-xl bg-red-600 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-red-700">
-                            <span>Demander un devis</span>
-                            <i data-lucide="arrow-right" class="h-4 w-4"></i>
-                        </a>
-                    </div>
-                </div>
+              
 
             </div>
         </div>
@@ -120,7 +108,7 @@
                                                lg:-ml-px lg:rounded-none lg:border-0 lg:border-l-2 lg:border-transparent lg:bg-transparent lg:px-5 lg:py-3
                                                lg:data-[active=true]:border-red-600 lg:data-[active=true]:bg-transparent lg:data-[active=true]:text-red-600">
                                         <span class="whitespace-nowrap">{{ $cat['title'] }}</span>
-                                        <span data-count="{{ $cat['id'] }}"
+                                        <span data-faq-count="{{ $cat['id'] }}"
                                             class="hidden text-xs font-medium text-slate-400 lg:inline">{{ count($cat['items']) }}</span>
                                     </a>
                                 </li>
@@ -268,7 +256,7 @@
                     cat.classList.toggle('hidden', visible === 0);
 
                     const nav = document.querySelector('[data-nav-item="' + cat.id + '"]');
-                    const count = document.querySelector('[data-count="' + cat.id + '"]');
+                    const count = document.querySelector('[data-faq-count="' + cat.id + '"]');
                     if (nav) nav.classList.toggle('hidden', visible === 0);
                     if (count) count.textContent = visible;
 

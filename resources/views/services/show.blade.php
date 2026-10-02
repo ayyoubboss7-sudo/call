@@ -207,7 +207,7 @@
 
                 <div class="service-fade-up service-delay-4 mt-8">
 
-                    <a href="{{ url('/contact') }}?service={{ urlencode($service['title']) }}"
+                    <a href="{{ url('/devis') }}?service={{ urlencode($service['title']) }}"
                         class="service-button inline-flex items-center gap-2 rounded-xl bg-red-600 px-6 py-3.5 text-sm font-bold text-white hover:bg-red-700">
 
                         Demander un devis

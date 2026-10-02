@@ -34,7 +34,7 @@
                 </p>
 
                 <div class="mt-8 flex flex-col sm:flex-row gap-3">
-                    <a href="{{ url('/contact') }}?secteur={{ $secteur->slug }}"
+                    <a href="{{ url('/devis') }}?secteur={{ $secteur->slug }}"
                        class="inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-3.5 text-sm font-bold text-white shadow-sm hover:bg-red-700 transition">
                         Demander un devis
                         <i data-lucide="arrow-right" class="w-4 h-4"></i>
