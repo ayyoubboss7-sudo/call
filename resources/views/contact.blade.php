@@ -303,203 +303,133 @@ CONTACT SECTION
                             </div>
 
 
-                            {{-- Form --}}
-                            <form action="#" method="POST" class="mt-8 space-y-6">
-
-                                @csrf
-
-
-                                {{-- Nom + Email --}}
-                                <div class="grid sm:grid-cols-2 gap-5">
-
-                                    <div>
-
-                                        <label for="nom" class="mb-2 block text-sm font-bold text-slate-700">
-
-                                            Nom complet
-
-                                        </label>
-
-                                        <div class="contact-input">
-
-                                            <i data-lucide="user" class="contact-form-icon">
-                                            </i>
-
-                                            <input type="text" id="nom" name="nom" placeholder="Votre nom"
-                                                required
-                                                class="w-full rounded-xl border border-slate-200 bg-slate-50 py-3.5 pr-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10">
-
-                                        </div>
-
-                                    </div>
-
-
-                                    <div>
-
-                                        <label for="email" class="mb-2 block text-sm font-bold text-slate-700">
-
-                                            Email
-
-                                        </label>
-
-                                        <div class="contact-input">
-
-                                            <i data-lucide="mail" class="contact-form-icon">
-                                            </i>
-
-                                            <input type="email" id="email" name="email"
-                                                placeholder="votre@email.com" required
-                                                class="w-full rounded-xl border border-slate-200 bg-slate-50 py-3.5 pr-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10">
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-
-                                {{-- Téléphone + Société --}}
-                                <div class="grid sm:grid-cols-2 gap-5">
-
-                                    <div>
-
-                                        <label for="telephone" class="mb-2 block text-sm font-bold text-slate-700">
-
-                                            Téléphone
-
-                                        </label>
-
-                                        <div class="contact-input">
-
-                                            <i data-lucide="phone" class="contact-form-icon">
-                                            </i>
-
-                                            <input type="tel" id="telephone" name="telephone"
-                                                placeholder="+212 6 XX XX XX XX"
-                                                class="w-full rounded-xl border border-slate-200 bg-slate-50 py-3.5 pr-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10">
-
-                                        </div>
-
-                                    </div>
-
-
-                                    <div>
-
-                                        <label for="societe" class="mb-2 block text-sm font-bold text-slate-700">
-
-                                            Société
-
-                                        </label>
-
-                                        <div class="contact-input">
-
-                                            <i data-lucide="building-2" class="contact-form-icon">
-                                            </i>
-
-                                            <input type="text" id="societe" name="societe"
-                                                placeholder="Nom de votre société"
-                                                class="w-full rounded-xl border border-slate-200 bg-slate-50 py-3.5 pr-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10">
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-
-                                {{-- Service --}}
-                                <div>
-
-                                    <label for="service" class="mb-2 block text-sm font-bold text-slate-700">
-
-                                        Service souhaité
-
-                                    </label>
-
-                                    <div class="contact-input">
-
-                                        <i data-lucide="briefcase-business" class="contact-form-icon">
-                                        </i>
-
-                                        <select id="service" name="service"
-                                            class="w-full appearance-none rounded-xl border border-slate-200 bg-slate-50 py-3.5 pl-11 pr-10 text-sm text-slate-700 outline-none transition focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10">
-
-                                            <option value="">
-                                                Sélectionnez un service
-                                            </option>
-
-                                            <option value="inbound">
-                                                Inbound / Réception d'appels
-                                            </option>
-
-                                            <option value="outbound">
-                                                Outbound / Émission d'appels
-                                            </option>
-
-                                            <option value="teleprospection">
-                                                Téléprospection
-                                            </option>
-
-                                            <option value="service-client">
-                                                Service client
-                                            </option>
-
-                                            <option value="leads">
-                                                Génération de leads
-                                            </option>
-
-                                            <option value="autre">
-                                                Autre demande
-                                            </option>
-
-                                        </select>
-
-                                        <i data-lucide="chevron-down" class="contact-select-icon">
-                                        </i>
-
-                                    </div>
-
-                                </div>
-
-
-                                {{-- Message --}}
-                                <div>
-
-                                    <label for="message" class="mb-2 block text-sm font-bold text-slate-700">
-
-                                        Votre message
-
-                                    </label>
-
-                                    <textarea id="message" name="message" rows="6" placeholder="Décrivez-nous votre besoin ou votre projet..."
-                                        required
-                                        class="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10"></textarea>
-
-                                </div>
-
-
-                                {{-- Submit --}}
-                                <button type="submit"
-                                    class="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-4 text-sm font-bold text-white shadow-lg shadow-red-600/20 transition duration-300 hover:bg-red-700 hover:-translate-y-0.5">
-
-                                    Envoyer ma demande
-
-                                    <i data-lucide="arrow-right"
-                                        class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1">
-                                    </i>
-
-                                </button>
-
-
-                                <p class="text-center text-xs text-slate-400">
-
-                                    Vos informations restent confidentielles et sont utilisées uniquement
-
-                                    pour répondre à votre demande.
-
-                                </p>
-
-                            </form>
+                          {{-- Form --}}
+<div id="formulaire" class="scroll-mt-28">
+
+    @if (session('success'))
+        <div class="mt-8 flex items-start gap-4 rounded-2xl bg-green-50 p-5 ring-1 ring-green-200" role="status">
+            <i data-lucide="check-circle-2" class="h-6 w-6 shrink-0 text-green-600"></i>
+            <div>
+                <p class="font-bold text-green-900">Message envoyé</p>
+                <p class="mt-1 text-sm leading-6 text-green-800">{{ session('success') }}</p>
+            </div>
+        </div>
+    @endif
+
+    @if ($errors->any())
+        <div class="mt-8 flex items-start gap-4 rounded-2xl bg-red-50 p-5 ring-1 ring-red-200" role="alert">
+            <i data-lucide="alert-circle" class="h-6 w-6 shrink-0 text-red-600"></i>
+            <div>
+                <p class="font-bold text-red-900">Veuillez corriger les champs en rouge</p>
+                <p class="mt-1 text-sm text-red-800">{{ $errors->count() }} erreur(s) dans le formulaire.</p>
+            </div>
+        </div>
+    @endif
+
+    <form action="{{ route('contact.store') }}" method="POST" novalidate class="mt-8 space-y-6">
+        @csrf
+
+        {{-- Champ piège anti-spam (invisible) --}}
+        <div style="position:absolute;left:-9999px;" aria-hidden="true">
+            <label>Ne pas remplir <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        {{-- Nom + Email --}}
+        <div class="grid sm:grid-cols-2 gap-5">
+
+            <div>
+                <label for="nom" class="mb-2 block text-sm font-bold text-slate-700">Nom complet <span class="text-red-600">*</span></label>
+                <div class="contact-input">
+                    <i data-lucide="user" class="contact-form-icon"></i>
+                    <input type="text" id="nom" name="nom" value="{{ old('nom') }}" placeholder="Votre nom" autocomplete="name"
+                        class="w-full rounded-xl border border-slate-200 bg-slate-50 py-3.5 pr-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10 @error('nom') !border-red-500 @enderror">
+                </div>
+                @error('nom') <p class="mt-2 text-sm text-red-600">{{ $message }}</p> @enderror
+            </div>
+
+            <div>
+                <label for="email" class="mb-2 block text-sm font-bold text-slate-700">Email <span class="text-red-600">*</span></label>
+                <div class="contact-input">
+                    <i data-lucide="mail" class="contact-form-icon"></i>
+                    <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="votre@email.com" autocomplete="email"
+                        class="w-full rounded-xl border border-slate-200 bg-slate-50 py-3.5 pr-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10 @error('email') !border-red-500 @enderror">
+                </div>
+                @error('email') <p class="mt-2 text-sm text-red-600">{{ $message }}</p> @enderror
+            </div>
+
+        </div>
+
+        {{-- Téléphone + Société --}}
+        <div class="grid sm:grid-cols-2 gap-5">
+
+            <div>
+                <label for="telephone" class="mb-2 block text-sm font-bold text-slate-700">Téléphone</label>
+                <div class="contact-input">
+                    <i data-lucide="phone" class="contact-form-icon"></i>
+                    <input type="tel" id="telephone" name="telephone" value="{{ old('telephone') }}" placeholder="+212 6 XX XX XX XX" autocomplete="tel"
+                        class="w-full rounded-xl border border-slate-200 bg-slate-50 py-3.5 pr-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10 @error('telephone') !border-red-500 @enderror">
+                </div>
+                @error('telephone') <p class="mt-2 text-sm text-red-600">{{ $message }}</p> @enderror
+            </div>
+
+            <div>
+                <label for="societe" class="mb-2 block text-sm font-bold text-slate-700">Société</label>
+                <div class="contact-input">
+                    <i data-lucide="building-2" class="contact-form-icon"></i>
+                    <input type="text" id="societe" name="societe" value="{{ old('societe') }}" placeholder="Nom de votre société" autocomplete="organization"
+                        class="w-full rounded-xl border border-slate-200 bg-slate-50 py-3.5 pr-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10 @error('societe') !border-red-500 @enderror">
+                </div>
+                @error('societe') <p class="mt-2 text-sm text-red-600">{{ $message }}</p> @enderror
+            </div>
+
+        </div>
+
+        {{-- Service --}}
+        <div>
+            <label for="service" class="mb-2 block text-sm font-bold text-slate-700">Service souhaité</label>
+            <div class="contact-input">
+                <i data-lucide="briefcase-business" class="contact-form-icon"></i>
+                <select id="service" name="service"
+                    class="w-full appearance-none rounded-xl border border-slate-200 bg-slate-50 py-3.5 pl-11 pr-10 text-sm text-slate-700 outline-none transition focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10 @error('service') !border-red-500 @enderror">
+                    <option value="">Sélectionnez un service</option>
+                    @foreach ([
+                        'inbound'         => 'Inbound / Réception d\'appels',
+                        'outbound'        => 'Outbound / Émission d\'appels',
+                        'teleprospection' => 'Téléprospection',
+                        'service-client'  => 'Service client',
+                        'leads'           => 'Génération de leads',
+                        'autre'           => 'Autre demande',
+                    ] as $value => $label)
+                        <option value="{{ $value }}" @selected(old('service') === $value)>{{ $label }}</option>
+                    @endforeach
+                </select>
+                <i data-lucide="chevron-down" class="contact-select-icon"></i>
+            </div>
+            @error('service') <p class="mt-2 text-sm text-red-600">{{ $message }}</p> @enderror
+        </div>
+
+        {{-- Message --}}
+        <div>
+            <label for="message" class="mb-2 block text-sm font-bold text-slate-700">Votre message <span class="text-red-600">*</span></label>
+            <textarea id="message" name="message" rows="6" placeholder="Décrivez-nous votre besoin ou votre projet..."
+                class="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10 @error('message') !border-red-500 @enderror">{{ old('message') }}</textarea>
+            @error('message') <p class="mt-2 text-sm text-red-600">{{ $message }}</p> @enderror
+        </div>
+
+        {{-- Submit --}}
+        <button type="submit"
+            class="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-4 text-sm font-bold text-white shadow-lg shadow-red-600/20 transition duration-300 hover:bg-red-700 hover:-translate-y-0.5">
+            Envoyer ma demande
+            <i data-lucide="arrow-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"></i>
+        </button>
+
+        <p class="text-center text-xs text-slate-400">
+            Vos informations restent confidentielles et sont utilisées uniquement
+            pour répondre à votre demande.
+        </p>
+
+    </form>
+</div>
 
                         </div>
 
@@ -849,5 +779,15 @@ CONTACT FORM ICONS CSS
             }
         </style>
     @endpush
+    @push('scripts')
+    @if ($errors->any() || session('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var f = document.getElementById('formulaire');
+                if (f) f.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        </script>
+    @endif
+@endpush
 
 @endsection
