@@ -6,28 +6,478 @@
     'Contactez ARTI CALL à Fès pour vos besoins en relation client, téléprospection, service
     client et développement commercial.')
 
-@section('content')
     {{-- =========================================================
-HERO
+CONTACT HERO ANIMATION
 ========================================================= --}}
+    @push('styles')
+        <style>
+            /* =========================================================
+                   CONTACT HERO - MÊME ANIMATION QUE SERVICES / FAQ
+                ========================================================== */
+
+            .arti-contact-bg {
+                position: absolute;
+                inset: 0;
+                overflow: hidden;
+                background-image: url('/images/call-center-bg.jpg');
+                background-size: cover;
+                background-position: center;
+                animation: contact-bg-zoom 18s ease-in-out infinite alternate;
+                will-change: transform;
+            }
+
+            .arti-contact-bg::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background:
+                    linear-gradient(90deg,
+                        rgba(2, 6, 23, 0.95) 0%,
+                        rgba(2, 6, 23, 0.82) 42%,
+                        rgba(2, 6, 23, 0.58) 100%);
+            }
+
+            /* =========================================================
+                   DARK OVERLAYS
+                ========================================================== */
+
+            .arti-contact-overlay {
+                position: absolute;
+                inset: 0;
+                pointer-events: none;
+            }
+
+            .arti-contact-overlay-1 {
+                background:
+                    linear-gradient(90deg,
+                        rgba(2, 6, 23, 0.92),
+                        rgba(2, 6, 23, 0.72),
+                        rgba(2, 6, 23, 0.42));
+            }
+
+            .arti-contact-overlay-2 {
+                background:
+                    linear-gradient(to top,
+                        rgba(2, 6, 23, 0.98),
+                        transparent 55%,
+                        rgba(2, 6, 23, 0.35));
+            }
+
+            .arti-contact-overlay-3 {
+                background:
+                    radial-gradient(circle at center,
+                        rgba(220, 38, 38, 0.08),
+                        transparent 58%);
+            }
+
+            /* =========================================================
+                   SMOKE
+                ========================================================== */
+
+            .arti-contact-smoke {
+                position: absolute;
+                border-radius: 9999px;
+                pointer-events: none;
+                filter: blur(80px);
+                will-change: transform, opacity;
+            }
+
+            .arti-contact-smoke-1 {
+                width: 430px;
+                height: 190px;
+                left: -130px;
+                top: 15%;
+                background: rgba(255, 255, 255, 0.12);
+                opacity: 0.24;
+                animation: contact-smoke-1 14s ease-in-out infinite alternate;
+            }
+
+            .arti-contact-smoke-2 {
+                width: 510px;
+                height: 230px;
+                right: -180px;
+                bottom: 4%;
+                background: rgba(220, 38, 38, 0.20);
+                opacity: 0.34;
+                animation: contact-smoke-2 17s ease-in-out infinite alternate;
+            }
+
+            .arti-contact-smoke-3 {
+                width: 360px;
+                height: 170px;
+                left: 36%;
+                top: -100px;
+                background: rgba(255, 255, 255, 0.10);
+                opacity: 0.18;
+                animation: contact-smoke-3 20s ease-in-out infinite alternate;
+            }
+
+            /* =========================================================
+                   RED GLOW
+                ========================================================== */
+
+            .arti-contact-glow {
+                position: absolute;
+                width: 430px;
+                height: 430px;
+                border-radius: 9999px;
+                background: rgba(220, 38, 38, 0.16);
+                filter: blur(90px);
+                pointer-events: none;
+                animation: contact-glow 7s ease-in-out infinite;
+            }
+
+            .arti-contact-glow-right {
+                right: -160px;
+                top: -150px;
+            }
+
+            .arti-contact-glow-left {
+                left: -180px;
+                bottom: -180px;
+                width: 350px;
+                height: 350px;
+                background: rgba(220, 38, 38, 0.09);
+                animation-delay: 2s;
+            }
+
+            /* =========================================================
+                   FLOATING PARTICLES
+                ========================================================== */
+
+            .arti-contact-particle {
+                position: absolute;
+                width: 4px;
+                height: 4px;
+                border-radius: 9999px;
+                background: rgba(248, 113, 113, 0.65);
+                box-shadow: 0 0 14px rgba(239, 68, 68, 0.50);
+                pointer-events: none;
+                animation: contact-particle linear infinite;
+            }
+
+            .arti-contact-particle.p1 {
+                left: 8%;
+                top: 35%;
+                animation-duration: 9s;
+                animation-delay: -2s;
+            }
+
+            .arti-contact-particle.p2 {
+                left: 20%;
+                top: 70%;
+                width: 3px;
+                height: 3px;
+                animation-duration: 12s;
+                animation-delay: -6s;
+            }
+
+            .arti-contact-particle.p3 {
+                left: 42%;
+                top: 22%;
+                animation-duration: 10s;
+                animation-delay: -4s;
+            }
+
+            .arti-contact-particle.p4 {
+                left: 65%;
+                top: 72%;
+                width: 3px;
+                height: 3px;
+                animation-duration: 13s;
+                animation-delay: -8s;
+            }
+
+            .arti-contact-particle.p5 {
+                left: 79%;
+                top: 32%;
+                animation-duration: 11s;
+                animation-delay: -3s;
+            }
+
+            .arti-contact-particle.p6 {
+                left: 91%;
+                top: 62%;
+                width: 3px;
+                height: 3px;
+                animation-duration: 14s;
+                animation-delay: -7s;
+            }
+
+            /* =========================================================
+                   HERO CONTENT ANIMATION
+                ========================================================== */
+
+            .arti-contact-content {
+                animation:
+                    contact-content-in 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+            }
+
+            .arti-contact-badge {
+                animation:
+                    contact-badge-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.10s both;
+            }
+
+            .arti-contact-title {
+                animation:
+                    contact-title-in 1s cubic-bezier(0.22, 1, 0.36, 1) 0.20s both;
+            }
+
+            .arti-contact-description {
+                animation:
+                    contact-description-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.38s both;
+            }
+
+            /* =========================================================
+                   HERO LINE
+                ========================================================== */
+
+            .arti-contact-hero-line {
+                position: absolute;
+                left: 12%;
+                right: 12%;
+                bottom: 0;
+                height: 1px;
+                background: linear-gradient(90deg,
+                        transparent,
+                        rgba(239, 68, 68, 0.85),
+                        transparent);
+                animation: contact-line 4s ease-in-out infinite;
+            }
+
+            /* =========================================================
+                   KEYFRAMES
+                ========================================================== */
+
+            @keyframes contact-bg-zoom {
+                0% {
+                    transform: scale(1);
+                }
+
+                100% {
+                    transform: scale(1.06);
+                }
+            }
+
+            @keyframes contact-smoke-1 {
+                0% {
+                    transform: translate3d(-20px, 20px, 0) scale(1);
+                    opacity: 0.16;
+                }
+
+                50% {
+                    opacity: 0.28;
+                }
+
+                100% {
+                    transform: translate3d(180px, -40px, 0) scale(1.25);
+                    opacity: 0.10;
+                }
+            }
+
+            @keyframes contact-smoke-2 {
+                0% {
+                    transform: translate3d(30px, 30px, 0) scale(1);
+                    opacity: 0.20;
+                }
+
+                100% {
+                    transform: translate3d(-180px, -80px, 0) scale(1.30);
+                    opacity: 0.38;
+                }
+            }
+
+            @keyframes contact-smoke-3 {
+                0% {
+                    transform: translate3d(-100px, 40px, 0) scale(0.90);
+                    opacity: 0.08;
+                }
+
+                100% {
+                    transform: translate3d(180px, 120px, 0) scale(1.20);
+                    opacity: 0.20;
+                }
+            }
+
+            @keyframes contact-glow {
+
+                0%,
+                100% {
+                    transform: scale(0.94);
+                    opacity: 0.55;
+                }
+
+                50% {
+                    transform: scale(1.12);
+                    opacity: 1;
+                }
+            }
+
+            @keyframes contact-particle {
+                0% {
+                    transform: translate3d(0, 35px, 0);
+                    opacity: 0;
+                }
+
+                15% {
+                    opacity: 0.75;
+                }
+
+                50% {
+                    transform: translate3d(35px, -70px, 0);
+                    opacity: 0.50;
+                }
+
+                85% {
+                    opacity: 0.70;
+                }
+
+                100% {
+                    transform: translate3d(-20px, -160px, 0);
+                    opacity: 0;
+                }
+            }
+
+            @keyframes contact-content-in {
+                from {
+                    opacity: 0;
+                    transform: translate3d(-45px, 20px, 0);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translate3d(0, 0, 0);
+                }
+            }
+
+            @keyframes contact-badge-in {
+                from {
+                    opacity: 0;
+                    transform: translateY(-15px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes contact-title-in {
+                from {
+                    opacity: 0;
+                    transform: translateY(25px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes contact-description-in {
+                from {
+                    opacity: 0;
+                    transform: translateY(18px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes contact-line {
+
+                0%,
+                100% {
+                    opacity: 0.35;
+                    transform: scaleX(0.75);
+                }
+
+                50% {
+                    opacity: 1;
+                    transform: scaleX(1);
+                }
+            }
+
+            /* =========================================================
+                   REDUCED MOTION
+                ========================================================== */
+
+            @media (prefers-reduced-motion: reduce) {
+
+                .arti-contact-bg,
+                .arti-contact-smoke,
+                .arti-contact-glow,
+                .arti-contact-particle,
+                .arti-contact-content,
+                .arti-contact-badge,
+                .arti-contact-title,
+                .arti-contact-description,
+                .arti-contact-hero-line {
+                    animation: none !important;
+                }
+
+                .arti-contact-content,
+                .arti-contact-badge,
+                .arti-contact-title,
+                .arti-contact-description {
+                    opacity: 1;
+                    transform: none;
+                }
+            }
+        </style>
+    @endpush
+
+
+@section('content')
+
+    {{-- =========================================================
+    HERO
+    ========================================================== --}}
     <section class="relative isolate overflow-hidden bg-slate-950 text-white">
-        {{-- Background --}}
-        <div class="absolute inset-0">
 
-            <div class="absolute -right-32 -top-32 w-96 h-96 rounded-full bg-red-600/20 blur-3xl"></div>
+        {{-- Background photo animée --}}
+        <div class="arti-contact-bg absolute inset-0 -z-30"></div>
 
-            <div class="absolute -left-32 bottom-0 w-96 h-96 rounded-full bg-red-600/10 blur-3xl"></div>
+        {{-- Overlays --}}
+        <div class="arti-contact-overlay arti-contact-overlay-1 absolute inset-0 -z-20"></div>
 
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(220,38,38,0.08),transparent_55%)]"></div>
+        <div class="arti-contact-overlay arti-contact-overlay-2 absolute inset-0 -z-20"></div>
 
-        </div>
+        <div class="arti-contact-overlay arti-contact-overlay-3 absolute inset-0 -z-20"></div>
 
-        <div class="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
 
-            <div class="max-w-3xl">
+        {{-- Red glow --}}
+        <div class="arti-contact-glow arti-contact-glow-right -z-10"></div>
 
+        <div class="arti-contact-glow arti-contact-glow-left -z-10"></div>
+
+
+        {{-- Smoke --}}
+        <div class="arti-contact-smoke arti-contact-smoke-1 -z-10"></div>
+
+        <div class="arti-contact-smoke arti-contact-smoke-2 -z-10"></div>
+
+        <div class="arti-contact-smoke arti-contact-smoke-3 -z-10"></div>
+
+
+        {{-- Floating particles --}}
+        <span class="arti-contact-particle p1"></span>
+        <span class="arti-contact-particle p2"></span>
+        <span class="arti-contact-particle p3"></span>
+        <span class="arti-contact-particle p4"></span>
+        <span class="arti-contact-particle p5"></span>
+        <span class="arti-contact-particle p6"></span>
+
+
+        <div class="relative z-10 mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+
+            <div class="arti-contact-content max-w-3xl">
+
+                {{-- Badge --}}
                 <div
-                    class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-bold uppercase tracking-widest text-red-400">
+                    class="arti-contact-badge inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-bold uppercase tracking-widest text-red-400 backdrop-blur-sm">
 
                     <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
 
@@ -35,7 +485,10 @@ HERO
 
                 </div>
 
-                <h1 class="mt-6 text-4xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">
+
+                {{-- Title --}}
+                <h1
+                    class="arti-contact-title mt-6 text-4xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">
 
                     Parlons de votre
 
@@ -45,7 +498,9 @@ HERO
 
                 </h1>
 
-                <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+
+                {{-- Description --}}
+                <p class="arti-contact-description mt-6 max-w-2xl text-lg leading-8 text-slate-300">
 
                     Une question, un besoin ou un projet ?
 
@@ -57,13 +512,17 @@ HERO
 
             </div>
 
+            {{-- Animated line --}}
+            <div class="arti-contact-hero-line"></div>
+
         </div>
+
     </section>
 
 
     {{-- =========================================================
-CONTACT SECTION
-========================================================= --}}
+    CONTACT SECTION
+    ========================================================== --}}
     <section class="bg-slate-50 py-20 sm:py-24">
 
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -72,8 +531,8 @@ CONTACT SECTION
 
 
                 {{-- =====================================================
-            LEFT - INFORMATIONS
-            ====================================================== --}}
+                LEFT - INFORMATIONS
+                ====================================================== --}}
                 <div class="lg:col-span-5">
 
                     <span class="text-sm font-bold uppercase tracking-widest text-red-600">
@@ -265,8 +724,8 @@ CONTACT SECTION
 
 
                 {{-- =====================================================
-            RIGHT - FORMULAIRE
-            ====================================================== --}}
+                RIGHT - FORMULAIRE
+                ====================================================== --}}
                 <div class="lg:col-span-7">
 
                     <div
@@ -445,8 +904,8 @@ CONTACT SECTION
 
 
     {{-- =========================================================
-MAP / LOCALISATION
-========================================================= --}}
+    MAP / LOCALISATION
+    ========================================================== --}}
     <section class="bg-white py-20 sm:py-24">
 
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -560,8 +1019,8 @@ MAP / LOCALISATION
 
 
     {{-- =========================================================
-FINAL CTA
-========================================================= --}}
+    FINAL CTA
+    ========================================================== --}}
     <section class="bg-slate-950 py-20 sm:py-24">
 
         <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
@@ -621,8 +1080,8 @@ FINAL CTA
 
 
     {{-- =========================================================
-CONTACT FORM ICONS CSS
-========================================================= --}}
+    CONTACT FORM ICONS CSS
+    ========================================================== --}}
     @push('styles')
         <style>
             .contact-input {
@@ -675,9 +1134,9 @@ CONTACT FORM ICONS CSS
 
 
             /* =========================================================
-                                                               PROFESSIONAL SMOKE BACKGROUND
-                                                               MAP / FÈS - ARTI CALL
-                                                            ========================================================= */
+                       PROFESSIONAL SMOKE BACKGROUND
+                       MAP / FÈS - ARTI CALL
+                    ========================================================= */
 
             .arti-smoke {
                 position: absolute;
