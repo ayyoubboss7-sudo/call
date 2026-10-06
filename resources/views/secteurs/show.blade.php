@@ -11,13 +11,6 @@
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
 
-        <nav class="flex items-center gap-2 text-sm text-slate-500" aria-label="Fil d'Ariane">
-            <a href="{{ url('/') }}" class="hover:text-red-600">Accueil</a>
-            <span>/</span>
-            <a href="{{ route('secteurs.index') }}" class="hover:text-red-600">Secteurs</a>
-            <span>/</span>
-            <span class="font-semibold text-slate-800">{{ $secteur->nom }}</span>
-        </nav>
 
         <div class="mt-8 grid gap-10 lg:grid-cols-3 lg:items-center">
             <div class="lg:col-span-2">

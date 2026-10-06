@@ -10,55 +10,520 @@
 
     {{-- =========================================================
     HERO
-========================================================= --}}
-    <section class="relative overflow-hidden bg-slate-950 text-white">
-        <div class="absolute inset-0">
-            <div class="absolute -right-32 -top-32 w-96 h-96 rounded-full bg-red-600/20 blur-3xl"></div>
-            <div class="absolute -left-32 bottom-0 w-96 h-96 rounded-full bg-red-600/10 blur-3xl"></div>
-        </div>
+    ========================================================== --}}
+
+    @push('styles')
+        <style>
+            /* =========================================================
+                        HERO - MÊME ANIMATION QUE SERVICES / SECTEURS
+                    ========================================================== */
+
+            .arti-about-hero-bg {
+                position: absolute;
+                inset: 0;
+                overflow: hidden;
+                background-image: url('/images/call-center-bg.jpg');
+                background-size: cover;
+                background-position: center;
+                animation: about-hero-bg-zoom 18s ease-in-out infinite alternate;
+                will-change: transform;
+            }
+
+            .arti-about-hero-bg::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background:
+                    linear-gradient(90deg,
+                        rgba(2, 6, 23, 0.94) 0%,
+                        rgba(2, 6, 23, 0.78) 45%,
+                        rgba(2, 6, 23, 0.55) 100%);
+            }
+
+            /* =========================================================
+                        SMOKE / FOG
+                    ========================================================== */
+
+            .arti-about-hero-smoke {
+                position: absolute;
+                border-radius: 9999px;
+                pointer-events: none;
+                filter: blur(80px);
+                will-change: transform, opacity;
+            }
+
+            .arti-about-hero-smoke-1 {
+                width: 420px;
+                height: 180px;
+                left: -120px;
+                top: 18%;
+                background: rgba(255, 255, 255, 0.12);
+                opacity: 0.25;
+                animation: about-hero-smoke-1 14s ease-in-out infinite alternate;
+            }
+
+            .arti-about-hero-smoke-2 {
+                width: 500px;
+                height: 220px;
+                right: -170px;
+                bottom: 5%;
+                background: rgba(220, 38, 38, 0.20);
+                opacity: 0.35;
+                animation: about-hero-smoke-2 17s ease-in-out infinite alternate;
+            }
+
+            .arti-about-hero-smoke-3 {
+                width: 350px;
+                height: 160px;
+                left: 35%;
+                top: -100px;
+                background: rgba(255, 255, 255, 0.10);
+                opacity: 0.18;
+                animation: about-hero-smoke-3 20s ease-in-out infinite alternate;
+            }
+
+            /* =========================================================
+                        RED GLOW
+                    ========================================================== */
+
+            .arti-about-hero-glow {
+                position: absolute;
+                width: 430px;
+                height: 430px;
+                border-radius: 9999px;
+                background: rgba(220, 38, 38, 0.16);
+                filter: blur(90px);
+                pointer-events: none;
+                animation: about-hero-glow 7s ease-in-out infinite;
+            }
+
+            .arti-about-hero-glow-right {
+                right: -160px;
+                top: -150px;
+            }
+
+            .arti-about-hero-glow-left {
+                left: -180px;
+                bottom: -180px;
+                width: 350px;
+                height: 350px;
+                background: rgba(220, 38, 38, 0.09);
+                animation-delay: 2s;
+            }
+
+            /* =========================================================
+                        FLOATING PARTICLES
+                    ========================================================== */
+
+            .arti-about-hero-particle {
+                position: absolute;
+                width: 4px;
+                height: 4px;
+                border-radius: 9999px;
+                background: rgba(248, 113, 113, 0.65);
+                box-shadow: 0 0 14px rgba(239, 68, 68, 0.50);
+                pointer-events: none;
+                animation: about-hero-particle linear infinite;
+            }
+
+            .arti-about-hero-particle.p1 {
+                left: 8%;
+                top: 35%;
+                animation-duration: 9s;
+                animation-delay: -2s;
+            }
+
+            .arti-about-hero-particle.p2 {
+                left: 20%;
+                top: 70%;
+                width: 3px;
+                height: 3px;
+                animation-duration: 12s;
+                animation-delay: -6s;
+            }
+
+            .arti-about-hero-particle.p3 {
+                left: 42%;
+                top: 22%;
+                animation-duration: 10s;
+                animation-delay: -4s;
+            }
+
+            .arti-about-hero-particle.p4 {
+                left: 65%;
+                top: 72%;
+                width: 3px;
+                height: 3px;
+                animation-duration: 13s;
+                animation-delay: -8s;
+            }
+
+            .arti-about-hero-particle.p5 {
+                left: 79%;
+                top: 32%;
+                animation-duration: 11s;
+                animation-delay: -3s;
+            }
+
+            .arti-about-hero-particle.p6 {
+                left: 91%;
+                top: 62%;
+                width: 3px;
+                height: 3px;
+                animation-duration: 14s;
+                animation-delay: -7s;
+            }
+
+            /* =========================================================
+                        HERO CONTENT ENTRANCE
+                    ========================================================== */
+
+            .arti-about-hero-content {
+                animation:
+                    about-hero-left-in 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+            }
+
+            .arti-about-hero-badge {
+                animation:
+                    about-hero-badge-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.10s both;
+            }
+
+            .arti-about-hero-title {
+                animation:
+                    about-hero-title-in 1s cubic-bezier(0.22, 1, 0.36, 1) 0.20s both;
+            }
+
+            .arti-about-hero-description {
+                animation:
+                    about-hero-description-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.38s both;
+            }
+
+            .arti-about-hero-buttons {
+                animation:
+                    about-hero-description-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.52s both;
+            }
+
+            /* =========================================================
+                        BUTTON SHINE
+                    ========================================================== */
+
+            .arti-about-hero-main-btn {
+                position: relative;
+                overflow: hidden;
+            }
+
+            .arti-about-hero-main-btn::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -120%;
+                width: 70%;
+                height: 100%;
+                background: linear-gradient(90deg,
+                        transparent,
+                        rgba(255, 255, 255, 0.20),
+                        transparent);
+                transform: skewX(-20deg);
+                transition: left 0.7s ease;
+            }
+
+            .arti-about-hero-main-btn:hover::before {
+                left: 150%;
+            }
+
+            /* =========================================================
+                        KEYFRAMES
+                    ========================================================== */
+
+            @keyframes about-hero-bg-zoom {
+                0% {
+                    transform: scale(1);
+                }
+
+                100% {
+                    transform: scale(1.06);
+                }
+            }
+
+            @keyframes about-hero-smoke-1 {
+                0% {
+                    transform: translate3d(-20px, 20px, 0) scale(1);
+                    opacity: 0.16;
+                }
+
+                50% {
+                    opacity: 0.28;
+                }
+
+                100% {
+                    transform: translate3d(180px, -40px, 0) scale(1.25);
+                    opacity: 0.10;
+                }
+            }
+
+            @keyframes about-hero-smoke-2 {
+                0% {
+                    transform: translate3d(30px, 30px, 0) scale(1);
+                    opacity: 0.20;
+                }
+
+                100% {
+                    transform: translate3d(-180px, -80px, 0) scale(1.30);
+                    opacity: 0.38;
+                }
+            }
+
+            @keyframes about-hero-smoke-3 {
+                0% {
+                    transform: translate3d(-100px, 40px, 0) scale(0.90);
+                    opacity: 0.08;
+                }
+
+                100% {
+                    transform: translate3d(180px, 120px, 0) scale(1.20);
+                    opacity: 0.20;
+                }
+            }
+
+            @keyframes about-hero-glow {
+
+                0%,
+                100% {
+                    transform: scale(0.94);
+                    opacity: 0.55;
+                }
+
+                50% {
+                    transform: scale(1.12);
+                    opacity: 1;
+                }
+            }
+
+            @keyframes about-hero-particle {
+                0% {
+                    transform: translate3d(0, 35px, 0);
+                    opacity: 0;
+                }
+
+                15% {
+                    opacity: 0.75;
+                }
+
+                50% {
+                    transform: translate3d(35px, -70px, 0);
+                    opacity: 0.50;
+                }
+
+                85% {
+                    opacity: 0.70;
+                }
+
+                100% {
+                    transform: translate3d(-20px, -160px, 0);
+                    opacity: 0;
+                }
+            }
+
+            @keyframes about-hero-left-in {
+                from {
+                    opacity: 0;
+                    transform: translate3d(-45px, 20px, 0);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translate3d(0, 0, 0);
+                }
+            }
+
+            @keyframes about-hero-badge-in {
+                from {
+                    opacity: 0;
+                    transform: translateY(-15px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes about-hero-title-in {
+                from {
+                    opacity: 0;
+                    transform: translateY(25px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes about-hero-description-in {
+                from {
+                    opacity: 0;
+                    transform: translateY(18px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            /* =========================================================
+                        ACCESSIBILITY
+                    ========================================================== */
+
+            @media (prefers-reduced-motion: reduce) {
+
+                .arti-about-hero-bg,
+                .arti-about-hero-smoke,
+                .arti-about-hero-glow,
+                .arti-about-hero-particle,
+                .arti-about-hero-content,
+                .arti-about-hero-badge,
+                .arti-about-hero-title,
+                .arti-about-hero-description,
+                .arti-about-hero-buttons {
+                    animation: none !important;
+                }
+
+                .arti-about-hero-content,
+                .arti-about-hero-badge,
+                .arti-about-hero-title,
+                .arti-about-hero-description,
+                .arti-about-hero-buttons {
+                    opacity: 1;
+                    transform: none;
+                }
+            }
+        </style>
+    @endpush
+
+
+    {{-- =========================================================
+    HERO
+    ========================================================== --}}
+
+    <section class="relative isolate overflow-hidden bg-slate-950 text-white">
+
+        {{-- Background photo --}}
+        <div class="arti-about-hero-bg absolute inset-0 -z-30"></div>
+
+        {{-- Dark overlay --}}
+        <div class="absolute inset-0 -z-20 bg-slate-950/75"></div>
+
+        {{-- Horizontal gradient --}}
+        <div class="absolute inset-0 -z-20 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/50"></div>
+
+        {{-- Vertical gradient --}}
+        <div class="absolute inset-0 -z-20 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/30"></div>
+
+
+        {{-- =====================================================
+            HERO ATMOSPHERE
+        ====================================================== --}}
+
+        <div class="arti-about-hero-glow arti-about-hero-glow-right -z-10"></div>
+
+        <div class="arti-about-hero-glow arti-about-hero-glow-left -z-10"></div>
+
+
+        {{-- Smoke --}}
+        <div class="arti-about-hero-smoke arti-about-hero-smoke-1 -z-10"></div>
+
+        <div class="arti-about-hero-smoke arti-about-hero-smoke-2 -z-10"></div>
+
+        <div class="arti-about-hero-smoke arti-about-hero-smoke-3 -z-10"></div>
+
+
+        {{-- Floating particles --}}
+        <span class="arti-about-hero-particle p1"></span>
+        <span class="arti-about-hero-particle p2"></span>
+        <span class="arti-about-hero-particle p3"></span>
+        <span class="arti-about-hero-particle p4"></span>
+        <span class="arti-about-hero-particle p5"></span>
+        <span class="arti-about-hero-particle p6"></span>
+
 
         <div class="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
-            <div class="max-w-3xl">
+
+            <div class="arti-about-hero-content max-w-3xl">
 
                 <div
-                    class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-bold uppercase tracking-widest text-red-400">
+                    class="arti-about-hero-badge inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-bold uppercase tracking-widest text-red-400 backdrop-blur-sm">
+
                     <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+
                     À propos de nous
+
                 </div>
 
-                <h1 class="mt-6 text-4xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">
+
+                <h1
+                    class="arti-about-hero-title mt-6 text-4xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">
+
                     Une relation client
-                    <span class="text-red-500">qui fait la différence.</span>
+                    <span class="text-red-500">
+                        qui fait la différence.
+                    </span>
+
                 </h1>
 
-                <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+
+                <p class="arti-about-hero-description mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+
                     ARTI CALL accompagne les entreprises dans la gestion de leur
                     relation client, la téléprospection et le développement
                     commercial avec des solutions professionnelles et adaptées
                     à leurs besoins.
+
                 </p>
 
-                <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+
+                <div class="arti-about-hero-buttons mt-8 flex flex-col gap-3 sm:flex-row">
+
                     <a href="{{ url('/contact') }}"
-                        class="inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-red-600/20 hover:bg-red-700 hover:-translate-y-0.5 transition duration-300">
-                        Parlons de votre projet
-                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        class="arti-about-hero-main-btn group inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-red-600/20 hover:bg-red-700 hover:-translate-y-0.5 transition duration-300">
+
+                        <span class="relative z-10">
+                            Parlons de votre projet
+                        </span>
+
+                        <i data-lucide="arrow-right"
+                            class="relative z-10 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"></i>
+
                     </a>
 
+
                     <a href="{{ url('/services') }}"
-                        class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-bold text-white hover:bg-white/10 transition">
-                        Découvrir nos services
+                        class="group inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-bold text-white hover:bg-white/10 transition backdrop-blur-sm">
+
+                        <span>
+                            Découvrir nos services
+                        </span>
+
+                        <i data-lucide="arrow-right"
+                            class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1">
+                        </i>
+
                     </a>
+
                 </div>
 
             </div>
+
         </div>
+
     </section>
 
 
     {{-- =========================================================
     INTRODUCTION
-========================================================= --}}
+    ========================================================== --}}
+
     <section class="bg-white py-20 sm:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -99,6 +564,7 @@
                                 <h3 class="font-bold text-slate-900">
                                     Relation client
                                 </h3>
+
                                 <p class="mt-1 text-sm leading-6 text-slate-500">
                                     Une expérience client professionnelle.
                                 </p>
@@ -114,6 +580,7 @@
                                 <h3 class="font-bold text-slate-900">
                                     Développement commercial
                                 </h3>
+
                                 <p class="mt-1 text-sm leading-6 text-slate-500">
                                     Des actions orientées vers vos objectifs.
                                 </p>
@@ -247,7 +714,8 @@
 
     {{-- =========================================================
     MISSION / VISION
-========================================================= --}}
+    ========================================================== --}}
+
     <section class="bg-slate-50 py-20 sm:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -315,7 +783,8 @@
 
     {{-- =========================================================
     VALEURS
-========================================================= --}}
+    ========================================================== --}}
+
     <section class="bg-white py-20 sm:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -426,7 +895,8 @@
 
     {{-- =========================================================
     CHIFFRES CLÉS
-========================================================= --}}
+    ========================================================== --}}
+
     <section class="bg-slate-950 py-20 sm:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -489,13 +959,15 @@
 
     {{-- =========================================================
     CTA FINAL
-========================================================= --}}
+    ========================================================== --}}
+
     <section class="bg-white py-20 sm:py-24">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <div class="relative overflow-hidden rounded-3xl bg-red-600 p-8 sm:p-12 lg:p-14 text-center">
 
                 <div class="absolute -right-24 -top-24 w-72 h-72 rounded-full bg-white/10"></div>
+
                 <div class="absolute -left-24 -bottom-28 w-80 h-80 rounded-full bg-white/5"></div>
 
                 <div class="relative z-10">
@@ -517,13 +989,18 @@
 
                         <a href="{{ url('/contact') }}"
                             class="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-bold text-red-600 hover:bg-slate-100 transition">
+
                             Nous contacter
+
                             <i data-lucide="arrow-right" class="w-4 h-4"></i>
+
                         </a>
 
                         <a href="{{ url('/services') }}"
                             class="inline-flex items-center justify-center rounded-xl border border-white/40 bg-white/10 px-6 py-3.5 text-sm font-bold text-white hover:bg-white/20 transition">
+
                             Voir nos services
+
                         </a>
 
                     </div>
@@ -538,7 +1015,8 @@
 
     {{-- =========================================================
     SMOKE + BACKGROUND ANIMATION
-========================================================= --}}
+    ========================================================== --}}
+
     @push('styles')
         <style>
             .arti-smoke {
