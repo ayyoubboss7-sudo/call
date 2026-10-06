@@ -17,8 +17,44 @@
         @yield('title', 'ARTI CALL - Centre d’appel à Fès, Maroc')
     </title>
 
-    {{-- Marque JS actif (les animations ne se cachent que si JS fonctionne) --}}
-    <script>document.documentElement.classList.add('js');</script>
+    {{-- Marque JS actif + intro (une seule fois par session) --}}
+    <script>
+        (function () {
+            var root = document.documentElement;
+            root.classList.add('js');
+
+            // Intro : une seule fois par session, jamais si l'utilisateur réduit les animations
+            try {
+                var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                if (!reduce && !sessionStorage.getItem('arti_intro')) {
+                    root.classList.add('show-preloader');
+                }
+            } catch (e) {}
+
+            // Fin de l'intro (appelée par le JS principal ou par la sécurité ci-dessous)
+            window.artiFinishIntro = function () {
+                if (!root.classList.contains('show-preloader') || root.classList.contains('intro-done')) return;
+
+                root.classList.add('intro-done');
+
+                try { sessionStorage.setItem('arti_intro', '1'); } catch (e) {}
+
+                document.dispatchEvent(new Event('arti:intro-done'));
+
+                setTimeout(function () {
+                    var pre = document.getElementById('arti-preloader');
+                    if (pre) pre.remove();
+                }, 1000);
+            };
+
+            // Sécurité : quoi qu'il arrive, l'intro se termine
+            if (root.classList.contains('show-preloader')) {
+                setTimeout(window.artiFinishIntro, 6000);
+            }
+        })();
+    </script>
+
+    <link rel="preload" as="image" href="{{ asset('images/logo.png') }}">
 
     {{-- Vite / Tailwind --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -102,6 +138,109 @@
             transition: width 2s cubic-bezier(.1, .6, .2, 1), opacity .2s;
         }
 
+        /* ===== Intro (preloader) : une fois par session ===== */
+        #arti-preloader {
+            display: none;
+        }
+
+        .show-preloader #arti-preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 100001;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 26px;
+            background: radial-gradient(60% 50% at 50% 45%, #fff1f1 0%, #ffffff 70%);
+            transition: opacity .7s ease .1s, visibility .7s ease .1s;
+        }
+
+        .show-preloader:not(.intro-done) body {
+            overflow: hidden;
+        }
+
+        .show-preloader.intro-done #arti-preloader {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .arti-pre__logo {
+            height: 72px;
+            width: auto;
+            animation: pre-logo-in .9s cubic-bezier(.22, 1, .36, 1) backwards;
+            transition: transform .7s ease, opacity .5s ease;
+        }
+
+        @media (min-width: 640px) {
+            .arti-pre__logo {
+                height: 88px;
+            }
+        }
+
+        .show-preloader.intro-done .arti-pre__logo {
+            transform: scale(1.06);
+            opacity: 0;
+        }
+
+        .arti-pre__bar {
+            width: 160px;
+            height: 3px;
+            overflow: hidden;
+            border-radius: 999px;
+            background: #e2e8f0;
+            animation: pre-fade .6s ease .3s backwards;
+        }
+
+        .arti-pre__bar span {
+            display: block;
+            width: 0;
+            height: 100%;
+            border-radius: 999px;
+            background: #dc2626;
+            animation: pre-bar 1.5s cubic-bezier(.1, .6, .2, 1) .2s forwards;
+        }
+
+        .intro-done .arti-pre__bar span {
+            animation: none;
+            width: 100%;
+            transition: width .25s ease;
+        }
+
+        .arti-pre__tag {
+            font-size: 12px;
+            letter-spacing: .08em;
+            color: #64748b;
+            animation: pre-fade .8s ease .5s backwards;
+        }
+
+        @keyframes pre-logo-in {
+            from { opacity: 0; transform: translateY(14px) scale(.96); }
+            to   { opacity: 1; transform: none; }
+        }
+
+        @keyframes pre-fade {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        @keyframes pre-bar {
+            from { width: 0; }
+            to   { width: 85%; }
+        }
+
+        /* La page n'apparaît qu'à la fin de l'intro */
+        .show-preloader .arti-main {
+            animation: none;
+            opacity: 0;
+        }
+
+        .show-preloader.intro-done .arti-main {
+            opacity: 1;
+            animation: page-in .7s cubic-bezier(.22, 1, .36, 1) .15s backwards;
+        }
+
         /* ===== Scroll reveal (automatique sur toutes les pages) ===== */
         .js [data-reveal] {
             opacity: 0;
@@ -145,6 +284,13 @@
 </head>
 
 <body class="min-h-screen bg-white text-slate-900 antialiased">
+
+    {{-- Intro (visible seulement à la première visite de la session) --}}
+    <div id="arti-preloader" role="status" aria-live="polite" aria-label="Chargement en cours">
+        <img src="{{ asset('images/logo.png') }}" alt="ARTI CALL" class="arti-pre__logo" fetchpriority="high">
+        <div class="arti-pre__bar"><span></span></div>
+        <p class="arti-pre__tag">Centre d'appel · Fès, Maroc</p>
+    </div>
 
     {{-- Barre de progression --}}
     <div id="page-progress"></div>
@@ -421,6 +567,26 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
 
+            /* ---------- Intro : fin du preloader ---------- */
+            if (document.documentElement.classList.contains('show-preloader')) {
+
+                var MIN_INTRO = 1500; // durée minimale d'affichage (ms depuis le début de la navigation)
+
+                var endIntro = function () {
+                    var wait = Math.max(0, MIN_INTRO - performance.now());
+                    setTimeout(function () {
+                        if (window.artiFinishIntro) window.artiFinishIntro();
+                    }, wait);
+                };
+
+                if (document.readyState === 'complete') {
+                    endIntro();
+                } else {
+                    window.addEventListener('load', endIntro);
+                }
+            }
+
+
             /* ---------- Icônes Lucide ---------- */
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
@@ -511,6 +677,8 @@
 
             autoReveal();
 
+            function initReveal() {
+
             var revealEls = document.querySelectorAll('[data-reveal]');
 
             revealEls.forEach(function (el) {
@@ -545,6 +713,16 @@
 
             } else {
                 revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+            }
+
+            }
+
+            // Les animations au scroll démarrent quand l'intro est terminée
+            if (document.documentElement.classList.contains('show-preloader') &&
+                !document.documentElement.classList.contains('intro-done')) {
+                document.addEventListener('arti:intro-done', initReveal, { once: true });
+            } else {
+                initReveal();
             }
 
 

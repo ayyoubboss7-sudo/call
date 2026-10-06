@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DevisController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\SecteurController;
@@ -22,9 +23,10 @@ Route::get('/a-propos', function () {
     return view('a-propos');
 });
 
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
+Route::get('/contact', [ContactController::class, 'create'])->name('contact');
+Route::post('/contact', [ContactController::class, 'store'])
+    ->middleware('throttle:5,1')
+    ->name('contact.store');;
 Route::get('/devis', [DevisController::class, 'create'])->name('devis');
 Route::post('/devis', [DevisController::class, 'store'])
     ->middleware('throttle:5,1')
