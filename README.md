@@ -115,8 +115,21 @@ GitHub: [@ayyoubboss7-sudo](https://github.com/ayyoubboss7-sudo)
 ---
 
 Developed as a web development project using Laravel and modern web technologies.
+
 ## Screenshots
 
 ### Homepage
 
 ![ARTI CALL Homepage](screenshots/home.png)
+
+### Services
+
+![ARTI CALL Services](screenshots/services.png)
+
+### Secteurs
+
+![ARTI CALL Sectors](screenshots/secteurs.png)
+
+### Contact
+
+![ARTI CALL Contact](screenshots/contact.png)
